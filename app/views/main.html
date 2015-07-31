@@ -1,0 +1,43 @@
+<div class="container">
+    <h1 class="title">Things to Do</h2>
+    <br />
+    <!-- Create new Todo -->
+    
+    <form role="form" ng-submit="addTodo()">
+        
+            <div class = "input-group">
+                <input type="text" ng-model="newTodo" placeholder="What do you need to do?" class="form-control input-lg">
+                <span class="input-group-btn">
+                    
+                <button type="button" class="btn btn-lg btn-success" ng-click="addTodo()">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+                </span>
+            </div>
+        
+    </form>
+    <br />
+
+    <!-- todo list -->
+    <div ui-sortable ng-model="todos">
+        <p class="input-group" ng-repeat="todo in todos track by $index" style="padding:5px 20px; cursor:move;">
+                <input type="text" ng-model="todo.task" class="form-control"> 
+            <span class="input-group-btn">
+                <button ng-controller="CompletedCtrl" class = "btn btn-success" ng-click="completeTodo($index)" aria-label="Complete">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+                <button ng-controller="MainCtrl" class = "btn  btn-danger" ng-click="removeTodo($index)" aria-label="Remove">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </span>
+        </p>
+    </div>
+
+ 
+    <div ng-model="completed">
+        <ul ng-repeat="complete in completed">
+            <li>{{complete}}</li>
+            <li>{{dateCompleted}}</li>
+        </ul>
+    </div>
+</div>
