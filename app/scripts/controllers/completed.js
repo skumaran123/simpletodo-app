@@ -13,15 +13,19 @@ angular.module('mytodoApp')
   	//GET COMPLETED
   	$scope.completed = {};
     try {
-    	$scope.completed = TodoListService.getCompletedListItems();
+      	$scope.completed = TodoListService.getCompletedListItems();
     } catch(error){
-    	console.log("error!");
+      	console.log("error!");
     }
 
     	//COMPLETE
     $scope.completeTodo = function($index){
     	//console.log($index);
     	TodoListService.finishTodo($index);
+    }
+
+    $scope.activateTodo = function($index){
+      TodoListService.uncompleteTodo($index);
     }
 
   });

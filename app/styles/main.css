@@ -84,6 +84,15 @@ body {
 
 }
 
+.navbar-default .navbar-toggle:hover {
+  background-color: #33AD5C;
+}
+
+.navbar-default .navbar-toggle:focus {
+  background-color: #33AD5C;
+}
+
+
 .header .navbar-header a {
     color: #FFF;
 }

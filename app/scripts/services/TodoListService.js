@@ -8,7 +8,7 @@
  * Service in the mytodoApp.
  */
 angular.module("mytodoApp")
-    .service('TodoListService', function (localStorageService) {
+    .service('TodoListService', function () {
     var activeList = [];
     var completedList = [];
     var taskId = 0;
@@ -19,8 +19,9 @@ angular.module("mytodoApp")
     };
 
     //GET COMPLETED LIST
-     this.getCompletedListItems = function($index){
-        return completedList;
+     this.getCompletedListItems = function(){
+        console.log(completedList);
+         return completedList;
     };
 
     //CREATE
@@ -41,13 +42,21 @@ angular.module("mytodoApp")
 
     //COMPLETE
     this.finishTodo = function($index){
+        //console.log(activeList[$index]);
         activeList[$index].dateModified = new Date();
-    	completedList.push(activeList.splice($index, 1));
+    	var fin = activeList.splice($index, 1);
+        completedList.unshift(fin[0]);
     };
 
     //DELETE
     this.deleteActive = function($index){
     	activeList.splice($index, 1);
+    };
+
+    this.uncompleteTodo = function($index){
+        completedList[$index].dateModified = new Date();
+        var unfin = completedList.splice($index, 1);
+        activeList.unshift(unfin[0]);
     };
     
   });

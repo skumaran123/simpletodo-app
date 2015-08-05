@@ -1,8 +1,13 @@
 <div class="container" ng-controller="CompletedCtrl">
-    <h1>Completed Items</h1>
+    <h1 class="title">Completed Items</h1>
     <div ng-model="completed">
-        <ul ng-repeat="complete in completed">
-            <li>{{complete}}</li> 
-        </ul>
+        <p class="input-group" ng-repeat="complete in completed track by $index" style="padding:5px 20px; cursor: move;">
+            <input type="text" ng-model="complete.task" class="form-control">
+                <span class="input-group-btn">
+                <button ng-controller="CompletedCtrl" class="btn btn-primary" ng-click="activateTodo($index)" aria-label="Activate">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+            </input>
+        </p>
     </div>
 </div>
